@@ -1,0 +1,372 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #909294;
+    font-family: 'robo',sans-serif;
+    
+    
+    
+    }
+ 
+/*cabeçario*/
+.page-header{
+  border: none;
+  margin-top: 15px;
+  background-color: #04AA6D;
+  height: 70px;
+  text-align: center;
+  padding:25px;
+
+}
+.container-superio{
+  display: flex;
+  background-color: #0a57a5;
+  justify-content: end;
+
+}
+.ul-ul-superio ul ,a{
+  width: 100%;
+  text-decoration: none;
+}
+.container-superio li{
+  list-style-type: none;
+  margin: 15px;
+  padding: 0;
+}
+.container-superio a{
+  color: white;
+}
+.page-header h1{
+  margin-top: 0px;
+  color: #f0f2f5;
+  font-size: 80px;
+}
+/**/
+.boteoes-superio{
+  display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20%;
+}
+.novojogobutton{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+/*buscar produto*/
+.container-pesquisar{
+  display: flex;
+   width: 850px;
+   align-items: center;
+   justify-content: center;
+   padding: 5px;
+   margin: auto;
+   
+}
+#busca{
+  position: relative;
+  width: 150px;
+  color: white;
+  height: 43px;
+  background-color: #0a57a5;
+  border: none;
+  top: 2px;
+  font-size: 25px
+}
+/*container central*/
+.container{
+    justify-content: center;
+    width: 950px;
+    display: block;
+    margin: auto;
+}
+.container-tabela{
+    width: 900px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 45px;
+}
+.tabela{
+
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      
+}
+.tabela td, .tabela th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .tabela tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .tabelatr:hover {background-color: #ddd;}
+  
+  .tabela th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  /*botoes altera apagar*/
+  .Altera-Apagar{
+    text-decoration: none;
+    text-align: center;
+  }
+  .Altera-Apagar img{
+    width: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+
+/*tela jogo*/
+.container-addjogo{
+    height: 100vh;
+    width: 100%;
+    background: rgba(25, 25, 15, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6000;
+    display: none;
+
+}
+.Visualisar{
+  height: 100vh;
+    width: 100%;
+    background: rgba(25, 25, 15, .9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6000;
+    display: none;
+}
+/*botao close*/
+.close{
+  position: absolute;
+  right: 150px;
+  color: #f0f2f5;
+  font-size: 50px;
+  cursor: pointer;
+}
+.Tipoclose{
+  background-color: yellow;
+  padding: 20px;
+  display: none; 
+  position: absolute;
+  right: 110px;
+  top: 55px;
+}
+.close:hover + .Tipoclose {
+  
+  display: block;
+}
+
+.Tela-jogo{
+  display: flex; 
+  background-color: #5d5e5d;  
+  justify-content: start;
+  
+  margin:0 auto;
+  padding: 15px;
+  width: 900px;
+  height: 0 auto;
+  border-radius: 15px;
+  box-shadow: 5px 10px white;
+
+}
+input[type=text] {
+ 
+  height: 45px;
+  width:500px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+/*botoes_altera*/
+.boteoes_altera{
+  display: flex;
+
+}
+.salvar{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 180px;
+}
+.Voltar{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  margin: 4px 2px;
+}
+/*tela jogo*/
+.Visualisar-dados{
+  display: flex;
+   align-items: center;
+  justify-content: center;
+}
+.Visualisar-dados{
+  height: 100vh;
+  width: 100%;
+  background: rgba(25, 25, 15, .9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6000;
+ 
+  display: none;
+}
+.list-unstyled{
+  display: flex;
+  margin: 0 auto;
+  background-color: rgba(10,23,55,0.5);
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6000;
+  
+  
+}
+.alertalert-success{
+  display: flex; 
+  color: white;
+  background-color: #5d5e5d;  
+  justify-content: center;
+  margin: auto;
+  font-size: 45px;
+  width: 800px;
+  height: 80px;
+  
+}
+
+li{
+  
+  font-size: 25px;
+  padding: 5px;
+  margin-left: 35px;
+}
+@media screen and (max-width: 1000px) {
+  .container{
+      width: auto;
+      height: 100vh;
+      margin: 15px;
+      flex-direction: column;
+  }
+  .page-header h1{
+    margin-top: 0px;
+    color: #f0f2f5;
+    font-size: 45px;
+  }
+  .container-tabela{
+    float: none;
+    width: auto;
+    margin: auto;
+  }
+  .container-superio{
+    display: flex;
+    background-color: #0a57a5;
+    justify-content: end;
+    height: 35px;
+  }
+  .ul-ul-superio ul ,a{
+    width: 100%;
+    text-decoration: none;
+  }
+  .container-superio li{
+    list-style-type: none;
+    margin: -10px;
+    padding: 0;
+    margin-left: -95px;
+  }
+  .container-superio a{
+    color: white;
+  }
+  .container-pesquisar{
+    width: auto;
+    margin: auto;
+  }
+  .container-pesquisar input{
+    width: 250px;
+    margin: auto;
+  }
+  .list-unstyled{
+   
+    margin: auto;
+  }
+  .alertalert-success{
+    font-size: 25px;
+    width: auto;
+    margin: auto;
+    background: none;
+  }
+}
+
+/*add foto*/
+
+
+.imgthumbnail{
+display: block;
+width: 500px;
+padding: 4px;
+height: 300px;
+}
+.img-fluid{
+  width: 200px;
+  height: 200px;
+  border: 0px solid red;
+  align-content: center;
+  border-radius: 100px;
+  
+}
+
+figcaption {
+  align-content: center;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+label {
+  align-content: center;
+  padding: 20px 10px;
+  width: 200px;
+  background-color: #333;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+

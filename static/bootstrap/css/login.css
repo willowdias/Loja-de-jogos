@@ -1,0 +1,29 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #909294;
+  font-family: 'robo',sans-serif;
+
+  
+  }
+.close-alerta{
+    position: absolute;
+    right:  305px;
+  }
+.img-login{
+  margin-top: 25px;
+    width: 400px;
+  border-radius: 50px;
+}
+img{
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
+}
+span{
+  top: 10px;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  right: 10px;
+  font-size:25px;
+}
