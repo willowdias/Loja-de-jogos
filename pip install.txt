@@ -1,0 +1,6 @@
+pip install flask
+pip install PyMySQL
+pip install Flask-MySQLdb
+pip install MySQL-python
+pip install mysql-connector-python
+pip install Flask-WTF#mudar forma como verifica campo em branco
