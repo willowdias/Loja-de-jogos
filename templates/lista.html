@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/lista.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/addjogo.js')}}"></script>
+    <meta charset="utf-8">
+    <link rel = "icon" href = "static/img/fundo11.jpeg" type = "image/x-icon">
+    
+        <title>Jogoteca</title>
+       
+   
+  </head>
+  <body>
+    <div align="center">  
+       
+   </div>  
+    <div class="container">
+        <div class="container-superio">
+            <ul class="ul-superio">
+        
+                <li ><a method="POST" href="{{url_for('login')}}" title="Deslogar Sistema">Logout</a></li>   
+               
+            </ul>
+          </div>
+        <div class="page-header">
+                <h1>{{titulo}}</h1>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            
+        <ul id="messages" class="list-unstyled"onclick="closealerta()" >
+
+            {% for message in messages %}
+            
+            <li class="alertalert-success" >{{ message }} </li>
+            <script>
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                    }
+
+                    async function demo() {
+                        for (let i = 0; i < 5; i++) {
+                            console.log(`Waiting ${i} seconds...`);
+                            await sleep(i * 200);
+                        }
+                        document.getElementById('messages').style.display='none';
+                    }
+
+                    demo();
+            </script>    
+            {% endfor %}
+        </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="container-tabela" id="container-tabela">
+            <input type="hidden" name="proxima" value="{{ proxima or url_for('novo') }}">
+            <div class="boteoes-superio">
+                <Button class="novojogobutton" id="novojogobutton" onclick="jogonovo()" title="Adicionar novo Jogo / atalho ' Alt + w' " accesskey="s">Novo Jogo </Button>
+                
+            </div>
+            <div class="container-pesquisar">
+                <form action="{{url_for('buscarjogo')}}"method="POST" >
+                    <input style="{{erro}}"type="text" placeholder="Buscar" id="Buscar" name="buscar" value="{{value}}">
+                    <button id="busca">Pesquisa</button>
+                </form>
+            </div>
+            
+            
+            <table class="tabela"><br>
+                <thead class="thead-default">
+                    <tr>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Console</th>
+                        <th>Horario</th>
+                        <th>Alterar</th>
+                        <th>Apagar</th>
+                        <th>Visualisar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jogos in lista %}
+                    <tr>
+                        <td>{{ jogos.id}}</td>
+                        <td>{{ jogos.nome }}</td>
+                        <td>{{ jogos.catergoria }}</td>
+                        <td>{{ jogos.console }}</td>
+                        <td>Horas</td>
+                        <td><a href="/editar/{{ jogos.id }}"   class="Altera-Apagar" ><img src="static/img/altera.svg"  alt="Kiwi standing on oval"></a></td>
+                        
+                        <td><a href="/excluir/{{ jogos.id }}" class="Altera-Apagar"><img src="static/img/Apagar.svg" alt="Kiwi standing on oval"></a></td>
+                        <td ><a href="/ver/{{ jogos.id }}"  class="Altera-Apagar"><img src="static/img/visualizar.png" alt="Kiwi standing on oval"titulo="Ver"></a></td>
+                    {% endfor%}
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+ 
+        </div>
+     
+        <div class="container-addjogo" id="container-addjogo">
+            <span class="close" onclick="closeaddjogo()" >X</span>
+            <div class="Tipoclose">Fechar Tela</div>
+            <center><H1 style="color: white; margin-top: 150px;font-size: 70px;">Adicionar Jogo</H1></center>
+            <div class="Tela-jogo" id="Tela-jogo">
+               
+                
+                <form action="{{url_for('addjogo')}}"method="POST" enctype="multipart/form-data"onclick="alerta()">
+                    <figure class="imgthumbnail">
+                        <img class="img-fluid" id="id_sua_img" src="{{ url_for('image', nome_arquivo='foto.png') }}">
+                        
+                        <figcaption>
+                            <label class="fileContainer">
+                              Selecionar Foto
+                              <input type="file" name="fotos" id="foto" accept="image/*" required>
+                            </label>
+                        </figcaption>
+               
+                    </figure>
+                    <fieldset>
+                        
+                        <input type="text" name="nome" id="nome" placeholder="Nome Do jogo" required><br>
+                        <input type="text" name="categoria" id="categoria" placeholder="Categoria" required><br>
+                        <input type="text" name="console" id="Console" placeholder="Tipo De Console"required><br>
+                        <button class="salvar" onclick="valida_form()">Salvar</button>
+                        <a href="{{url_for('novo')}}" class="Voltar">Cancelar</a>
+                    </fieldset>
+                    
+                </form>
+     
+            </div>
+        </div>
+        
+
+    </div>
+    {% if show_predictions_modal %}
+    
+    <div class="Visualisar" style="{{mostra}}"id="container-addjogo">
+
+        <center><H1 style="color: white; margin-top: 150px;font-size: 70px;">Visualisar</H1></center>
+        <div class="Tela-jogo" id="Tela-jogo">
+            {% for jogos in editar %}
+            <form action="{{url_for('atualizar')}}"method="POST" enctype="multipart/form-data" >
+                <div class="top-Visualisar" style="display:flex;">
+                    <img class="img-fluid" id="id_sua_img" src="{{ url_for('image', nome_arquivo=foto) }}">
+                    <label style="width:150px;height:20px;position: relative;top:50px;left:15px;">Nome: {{jogos.nome}}</label>
+                </div>
+                <input type="hidden" name="id" value="{{ jogos.id }}">
+                <input type="text" name="nome" placeholder="Nome Do jogo" value="{{ jogos.nome }}" disabled><br>
+                <input type="text" name="categoria" placeholder="Categoria" value="{{ jogos.catergoria }}"disabled><br>
+                <input type="text" name="console" placeholder="Tipo De Console" value="{{ jogos.console }}"disabled><br>
+                
+                <div class="boteoes_altera">
+                
+                  <a href="{{url_for('novo')}}" class="Voltar">Cancelar</a>
+                </div>
+            </form>
+            {% endfor%}
+ 
+        </div>
+    </div>
+    {% endif %}
+   
+  </body>
+  <script>
+    //adiciona ftoo
+    $("#foto").change(function(){
+        if($(this).val()){ // só se o input não estiver vazio
+        var img = this.files[0]; // seleciona o arquivo do input
+        var f = new FileReader(); // cria o objeto FileReader
+        f.onload = function(e){ // ao carregar a imagem
+            $("#id_sua_img").attr("src",e.target.result); // altera o src da imagem
+        }
+        f.readAsDataURL(img); // lê o arquivo
+        }
+    });
+    //adicionar atalho botao
+ 
+    document.getElementById("novojogobutton").accessKey = "w";
+    
+    
+</script>
+    
+   
+</html>

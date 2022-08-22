@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/lista.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/addjogo.js')}}"></script>
+    <meta charset="utf-8">
+    <link rel = "icon" href = "static/img/fundo11.jpeg" type = "image/x-icon">
+    
+    <title>Alterar jogos</title>
+       
+   
+  </head>
+  <body>
+    
+        <div class="container-altera" id="container-addjogo">
+           
+            <div class="Tipoclose">Fechar Tela</div>
+            <center><H1 style="color: white; margin-top: 150px;">Adicionar Jogo</H1></center>
+            <div class="Tela-jogo">
+               
+                {% for jogos in editar %}
+                <form action="{{url_for('atualizar')}}"method="POST" enctype="multipart/form-data" >
+                  <figure class="imgthumbnail">
+                    <img class="img-fluid" id="id_sua_img" src="{{ url_for('image', nome_arquivo=foto) }}">
+                    
+                    <figcaption>
+                        <label class="fileContainer">
+                          Selecionar Foto
+                          <input type="file" name="fotos" id="foto" accept="image/*" >
+                        </label>
+                    </figcaption>
+           
+                </figure>
+                    <input type="hidden" name="id" value="{{ jogos.id }}">
+                    <input type="text" name="nome" placeholder="Nome Do jogo" value="{{ jogos.nome }}" required><br>
+                    <input type="text" name="categoria" placeholder="Categoria" value="{{ jogos.catergoria }}"required><br>
+                    <input type="text" name="console" placeholder="Tipo De Console" value="{{ jogos.console }}"required><br>
+                    <div class="boteoes_altera">
+                      <button class="salvar">Salvar</button>
+                      <a href="{{url_for('novo')}}" class="Voltar">Cancelar</a>
+                    </div>
+                </form>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+  </body>
+  <script>
+    //adiciona ftoo
+    $("#foto").change(function(){
+        if($(this).val()){ // só se o input não estiver vazio
+        var img = this.files[0]; // seleciona o arquivo do input
+        var f = new FileReader(); // cria o objeto FileReader
+        f.onload = function(e){ // ao carregar a imagem
+            $("#id_sua_img").attr("src",e.target.result); // altera o src da imagem
+        }
+        f.readAsDataURL(img); // lê o arquivo
+        }
+    });
+   
+</script>
+    
+</html>
